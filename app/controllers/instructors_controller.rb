@@ -1,6 +1,4 @@
 class InstructorsController < ApplicationController
-  before_action :require_login
-
 
   def index
     Instructor.certified

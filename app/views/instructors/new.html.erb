@@ -1,0 +1,14 @@
+<h3>Instructor Form</h3>
+
+<%= form_for(@instructor) do |f| %>
+  <label>Name</label><br>
+  <%= f.text_field :email %><br>
+
+  <label>Gym</label><br>
+  <%= f.text_field :gym %><br>
+
+  <label>Specialty</label><br>
+  <%= f.text_field :specialty %><br>
+
+  <%= f.submit %>
+<% end %>
