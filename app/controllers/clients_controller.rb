@@ -1,4 +1,5 @@
 class ClientsController < ApplicationController
+  before_action :require_login
 
   def show
     @client = Client.find(params[:id])
@@ -35,5 +36,9 @@ class ClientsController < ApplicationController
 
   def client_params
     params.permit(:usernam, :email, :password_digest)
+  end
+
+  def require_login
+    return head(:forbidden) unless session.include? :instructor_id
   end
 end
