@@ -1,4 +1,7 @@
 class Instructor < ApplicationRecord
-  has_many :classes
-  has_many :clients, through: :classes 
+  has_many :trainings
+  has_many :clients, through: :trainings
+
+  scope :certified, -> { where(certified: true) }
+  scope :instructor, -> (name) { where(instructor_name: name) }
 end
