@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :instructors
-  resources :clients, only: [:new, :create, :show]
+  resources :clients
   resources :trainings
 
   get '/signin', to: 'sessions#new'
@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   post '/trainings', to: 'sessions#create'
 
-  root 'welcome#home'
+  root 'clients#new'
   get '/auth/:provider/callback' => 'sessions#create'
 end
