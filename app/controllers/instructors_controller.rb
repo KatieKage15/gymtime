@@ -9,7 +9,9 @@ class InstructorsController < ApplicationController
     @instructor = Instructor.new
 
   def show
-    @instructor = Instructor.find(params[:instructor_id])
+  end
+
+  def edit
   end
 
   def create
@@ -22,10 +24,16 @@ class InstructorsController < ApplicationController
   end
 
   def update
-    @instructor = Instructor.find(params[:id])
+    @instructor.update(instructor_params)
+    if @instructor.save
+      redirect_to instructor_path(@instructors)
+    else
+      render :edit
+    end
   end
 
-private
+  private
+
   def find_instructor
     @instructor = Instructor.find_by(id: params[:id])
   end
