@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :instructors
-  resources :clients, only (:new, :create, :show)
+  resources :clients, only: [:new, :create, :show]
   resources :trainings
 
   get '/signin', to: 'sessions#new'
