@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
 
   def current_user
-    if session[client_id].present?
-      client = Client.find_by(:id session[:client_id])
+    if session[:client_id].present?
+      client = Client.find_by(:id => session[:user_id])
     end
   end
 
