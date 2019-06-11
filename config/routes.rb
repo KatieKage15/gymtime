@@ -9,5 +9,5 @@ Rails.application.routes.draw do
   post '/trainings', to: 'sessions#create'
 
   root 'welcome#home'
-  get '/auth/facebook/callback' => 'sessions#create'
+  get '/auth/:provider/callback' => 'sessions#create'
 end
