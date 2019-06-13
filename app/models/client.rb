@@ -3,11 +3,8 @@ class Client < ApplicationRecord
   has_many :instructors, through: :trainings
 
   def self.find_or_create_by_omniauth(auth_hash)
-    oauth_username = auth_hash[:username]
-    if client = Client.find_by(:username => oauth_username)
-      return client
-    else
-      client = Client.create(:username => oauth_username, :password => SecureRandom.hex)
+    self.where(:username => oauth_username).first_or_create do |client|
+      client.password = SecureRandom.hex
     end
   end
 end
