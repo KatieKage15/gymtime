@@ -13,7 +13,7 @@ class ClientsController < ApplicationController
     if @client.valid?
         redirect_to client_path(@client)
     else
-      render :new
+      render :new 
     end
   end
 

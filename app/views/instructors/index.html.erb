@@ -1,0 +1,10 @@
+<h1>Welcome, <%=current_client.username%></h1>
+<h2>Here are your list of certified instructors:</h2>
+
+  <%current_client.instructors.each do |instructor|%>
+    <div>
+      <h3>  <%= instructor.name %>
+          <%= instructor.gym %> </h3>
+        <%= instructor.specialty %>
+    </div>
+  <% end %>
