@@ -1,7 +1,7 @@
-<h1>Welcome, <%=current_client.username%></h1>
+<h1>Welcome, <%= @client.username %></h1>
 <h2>Here are your list of certified instructors:</h2>
 
-  <%current_client.instructors.each do |instructor|%>
+  <%Instructors.each do |instructor|%>
     <div>
       <h3>  <%= instructor.name %>
           <%= instructor.gym %> </h3>
