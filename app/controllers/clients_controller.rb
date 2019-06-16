@@ -1,20 +1,30 @@
 class ClientsController < ApplicationController
 
-  def show
-    @client = Client.find_by(:id => params[:id])
-  end
-
   def new
     @client = Client.new
+  end
+
+  def index
+    @client = Client.all
+  end
+
+  def show
+    @client = current_client
   end
 
   def create
     @client = Client.create(client_params)
     if @client.valid?
-        redirect_to instructor_path(@instrucors)
+        redirect_to instructor_path(instructor)
     else
       render :new
     end
+  end
+
+  def destroy
+    @client = Client.find(params[:id])
+    @client.destroy
+    redirect_to instructor_path
   end
 
   private
