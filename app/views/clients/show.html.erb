@@ -1,1 +1,12 @@
-<%= @client.username %>
+<h1>Your Profile</h1>
+<p> Email: <%= @client.email %> </p>
+<p> Username: <%= @client.username %> </p>
+
+<% if @client.admin %>
+  <p>ADMIN</p>
+  <%= link_to "Create New Client", new_client_path %>
+<% end %>
+
+<%= link_to "Edit Account Settings", edit_client_registration_path %>
+<%= link_to "View Specialties", specialties_path %>
+<%= link_to "View Instructors", instructors_path %>

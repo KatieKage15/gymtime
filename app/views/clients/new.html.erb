@@ -1,13 +1,2 @@
-<h3>Sign Up</h3>
-<%= form_for(@client) do |f| %>
-  <label>Email</label><br>
-  <%= f.text_field :email %><br>
-
-  <label>Username</label><br>
-  <%= f.text_field :username %><br>
-
-  <label>Password</label><br>
-  <%= f.password_field :password_digest %><br>
-
-  <%= f.submit %>
-<% end %>
+<h1>Create a New Client</h1>
+<%= render 'form' %>  
