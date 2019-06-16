@@ -5,7 +5,7 @@
   <%= link_to "Sign Up", new_cient_path %>
   <%= link_to "Log In", new_client_session_path %>
   <% else %>
-  <%= link_to "Profile", client_path(current_client.id) %>
+  <%= link_to "Profile", client_path(current_client.client_id) %>
   <%= link_to "Log Out", destroy_client_session_path, method: "delete" %>
   <% end %>
 </div>
