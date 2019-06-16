@@ -1,0 +1,10 @@
+<h1>Current Client</h1>
+  <ul>
+  <% @client.each do |client| %>
+    <li><%= link_to "#{client.username}", client_path(client) %></li>
+  <% end %>
+  </ul>
+
+<% if current_client.admin %>
+  <%= link_to "Create New Client", new_client_path %>
+<% end %>
