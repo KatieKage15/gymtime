@@ -1,3 +1,7 @@
-<%= @instructor.name %>
-<%= @instructor.gym %>
-<%= @instructor.specialty %>
+<h1> <%= @instructor.name %> </h1>
+
+<h3> Specialty: <%= @instructor.specialty %> </h3>
+<h4> Associated Gym: <%= @instructor.gym %>: </h4>
+
+<%= link_to "View Specialties", specialties_path %>
+<%= link_to "View Instructors", instructors_path %>
