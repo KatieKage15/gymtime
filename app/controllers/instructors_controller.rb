@@ -8,8 +8,10 @@ class InstructorsController < ApplicationController
   def new
     @instructor = Instructor.new
   end
-  
+
   def show
+    @instructor = Instructor.find(params[:id])
+    Instructor.specialty(params[:name])
   end
 
   def edit
