@@ -6,5 +6,4 @@ class Instructor < ApplicationRecord
   scope :instructor, -> (name) { where(instructor_name: name) }
 
   validates :name, presence: true
-  validates :email, uniqueness: true
 end
