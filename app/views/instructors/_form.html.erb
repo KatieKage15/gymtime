@@ -1,0 +1,27 @@
+<% if @instructor.errors.any? %>
+  <h3>Please correct the following errors before continuing:</h3>
+  <ul>
+    <% @instructor.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+<%= form_for @instructor do |f| %>
+
+  <%= f.label :name %> <br>
+  <%= f.text_field :name %>
+  <br>
+
+  <%= f.label :spcialty %> <br>
+  <%= f.text_field :specialty %>
+  <br>
+
+  <%= f.label :gym %> <br>
+  <%= f.text_field :gym %>
+  <br>
+  <br>
+  <%= f.submit %>
+
+<% end %>
