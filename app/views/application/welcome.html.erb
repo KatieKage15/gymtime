@@ -1,0 +1,14 @@
+<h1> Welcome to GymTime! </h1>
+<h3> Let's find you the perfect fitness intructor! </h3>
+
+<% if client_signed_in? %>
+<h3> Hello, <%= current_client.username %>! What are your fitness goals? </h3>
+  <%= link_to "Training Specialties", specialty_path %>
+  <%= link_to "Our Instructors", instructor_path %>
+<% end %>
+
+<% if client_signed_in? %>
+<% if current_client.admin %>
+  <%= link_to "View Current Clients", client_path %>
+<% end %>
+<% end %>
