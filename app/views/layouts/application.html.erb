@@ -1,31 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>GymTime</title>
     <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+
   <body>
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-
-        <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
-        <a class="navbar-brand" <%= link_to "Sign Up", new_client_path %></a>
-        <a class="navbar-brand" <%= link_to "Log In", signin_path %></a>
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-          </ul>
-<h1>Welcome to GymTime!</h1>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
-
-    <!-- content -->
-    <div class="container"  role="main">
-      <%= yield %>
-    </div>
+    <%= render 'layouts/nav' %>
+    <%= yield %>
   </body>
 </html>
