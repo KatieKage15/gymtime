@@ -1,0 +1,10 @@
+<div class='topnav'>
+  <%= link_to "Home", root_path %>
+  <% if !user_signed_in? %>
+  <%= link_to "Sign Up", new_client_path %>
+  <%= link_to "Log In", new_client_session_path %>
+  <% else %>
+  <%= link_to "Profile", client_path(current_client.id) %>
+  <%= link_to "Log Out", destroy_client_session_path, method: "delete" %>
+  <% end %>
+</div>
