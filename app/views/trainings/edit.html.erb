@@ -1,0 +1,21 @@
+<%if @required.errors.any?%>
+  <div class='fields_with_errors'>
+    <%@required.errors.full_messages.each do |msg|%>
+      <%=msg%>
+    <%end%>
+  </div>
+<%end%>
+<p>Update the day/time of the session.</p>
+<%=form_for(@required) do |f|%>
+  <%=f.collection_select(:training_id, @training, :id, :name)%>
+  <%=hidden_field_tag :"required_training[instructor_id]", params[:id]%>
+  <%=text_field_tag :"required_training[name]"%>
+  <%=select_tag :"required_training[daytime]", raw("<option>Monday 6:00</option>
+                             <option>Monday 10:00</option>
+                             <option>Wednesday 11:30</option>
+                             <option>Saturday 12:00</option>")%>
+  <%=submit_tag%>
+<br>
+<%end%>
+<br>
+<%=link_to "Add Training Session", new_training_path%>

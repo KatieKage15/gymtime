@@ -1,0 +1,18 @@
+<%if @training.errors.any?%>
+  <div class='fields_with_errors'>
+    <%@training.errors.full_messages.each do |msg|%>
+      <%=msg%>
+    <%end%>
+  </div>
+<%end%>
+<%=form_for(@training) do |f|%>
+  <%=f.label :name%>
+  <%=f.text_field :name%>
+  <br>
+
+  <%=f.label :daytime%>
+  <%=f.text_field :daytime%>
+  <br>
+
+  <%=f.submit%>
+<%end%>

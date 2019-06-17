@@ -23,8 +23,9 @@ class TrainingsController < ApplicationController
       @training = Training.find_by(id: params[:id])
     end
 
-    private
+  private
 
-      def training_params
-        params.require(:training).permit(:name, :daytime)
-      end
+    def training_params
+      params.require(:training).permit(:name, :daytime)
+    end
+end
