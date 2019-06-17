@@ -1,24 +1,20 @@
-# README
+GymTime is a simple Rails web application where clients can create an account and set up a training session with a selected intrcutor.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+License information: MIT (see LICENSE)
 
-Things you may want to cover:
+Installation Instructions
+To install this app:
 
-* Ruby version
+1. Fork and clone this repository
+(ssh key: )
 
-* System dependencies
+2. Make sure you are in the proper directory in your terminal. Then run the following command "bundle install" to install all necessary gem files.  You can review the files and versions to be installed in the Gemfile.  
 
-* Configuration
+3. Run the command "rake db:migrate" to create Active Record migrations.
 
-* Database creation
+4. Once migrations are complete, run the command "rails s" to create a local server.  Visit the URL provided (http://localhost:3000/) and create an account or login to your existing account.  You can also sign up and/or login using your existing Github account.
 
-* Database initialization
+License
+The app is available as open source under the terms of the MIT License.
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Copyright (c) 2019 KatieKage15
