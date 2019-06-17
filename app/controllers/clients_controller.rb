@@ -11,7 +11,7 @@ class ClientsController < ApplicationController
 
   def show
     @client = Client.all
-    @instructor = Instructor.all 
+    @instructor = Instructor.all
   end
 
   def create
@@ -29,7 +29,7 @@ class ClientsController < ApplicationController
     redirect_to instructors_path
   end
 
-  private
+    private
 
   def client_params
     params.require(:client).permit(:username, :email, :password_digest)
