@@ -1,11 +1,6 @@
-<h1>Welcome, <%= @client.username %></h1>
+<h1>Welcome!</h1>
 <h2>Here are your list of certified instructors:</h2>
 
-  <%Instructors.each do |instructor|%>
-    <div>
-      <h3>  <%= instructor.name %>
-          <%= instructor.gym %> </h3>
-        <%= instructor.specialty %>
-    </div>
+<% @instructor.each do |instructor| %>
+    <li><%= link_to "#{instructor.name}", instructor_path(instructor.id) %></li>
   <% end %>
-<%= link_to "View Instructor Specialties", specialties_path %>

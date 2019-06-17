@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   post '/trainings', to: 'sessions#create'
 
-  root 'clients#new'
+  root 'application#welcome'
   get '/auth/:provider/callback' => 'sessions#create'
 end

@@ -15,7 +15,7 @@ class ClientsController < ApplicationController
   def create
     @client = Client.create(client_params)
     if @client.valid?
-        redirect_to instructor_path(instructor)
+        redirect_to instructors_path(@instructor)
     else
       render :new
     end

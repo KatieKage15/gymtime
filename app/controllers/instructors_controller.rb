@@ -2,7 +2,7 @@ class InstructorsController < ApplicationController
   before_action :find_instructor, only: [:show, :edit, :update]
 
   def index
-    Instructor.certified
+    @instructor = Instructor.all
   end
 
   def new
@@ -11,7 +11,7 @@ class InstructorsController < ApplicationController
 
   def show
     @instructor = Instructor.find(params[:id])
-    Instructor.specialty(params[:name])
+    Instructor.find_by(params[:specialty])
   end
 
   def edit
@@ -20,7 +20,7 @@ class InstructorsController < ApplicationController
   def create
     @instructor = Instructor.create(instructor_params)
     if @instructor
-      redirect_to instructor_path(@instructor)
+      redirect_to instructors_path(@instructor)
     else
       render :new
     end
