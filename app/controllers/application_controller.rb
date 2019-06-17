@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
 
   def current_client
     if session[:client_id].present?
-      client = Client.find_by(:id => session[:user_id])
+      client = Client.find_by(:id => session[:client_id])
     end
   end
 
