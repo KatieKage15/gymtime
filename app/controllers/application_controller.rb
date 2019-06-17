@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::Base
+  protect_from_forgery with: :exception
+  helper_method :current_client, :require_login
+
 
   def current_client
     if session[:client_id].present?
@@ -7,7 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_login
-    unless current_user
+    unless current_client
       redirect_to root_url
     end
   end

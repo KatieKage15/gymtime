@@ -1,19 +1,13 @@
 class InstructorsController < ApplicationController
   before_action :find_instructor, only: [:show, :edit, :update]
-
-  def index
-    @instructor = Instructor.all
-  end
+  before_action :require_login
 
   def new
     @instructor = Instructor.new
   end
 
   def show
-    @instructor = Instructor.find(params[:id])
-  end
-
-  def edit
+    @instructor = Instructor.find_by(id: params[:id])
   end
 
   def create
