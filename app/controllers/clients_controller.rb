@@ -4,28 +4,27 @@ class ClientsController < ApplicationController
     @client = Client.new
   end
 
-  # def index
-  #   @client = Client.all
-  # end
+   def index
+     @client = Client.all
+   end
 
   def show
-    @client = Client.find_by(id: session[:client_id])
-    if @client.trainings.empty?
-      redirect_to new_training_path(@client)
-    end
-    @trainings = @client.trainings
+    @client = current_client
   end
 
   def create
-    if params[:client][:password_digest] == params[:client][:password_confirmation]
-      @client = Client.new(client_params)
-      if @client.save
-        session[:client_id] = @client.id
-        redirect_to @client
-      else
-        render :new
-      end
+    client = Client.create(client_params)
+    if client.save
+      redirect_to client_path(client)
+    else
+      render :new
     end
+  end
+
+  def destroy
+    @client = Client.find(params[:id])
+    @client.destroy
+    redirect_to instructors_path
   end
 
   private

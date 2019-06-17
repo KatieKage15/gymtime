@@ -1,5 +1,5 @@
 <p>Choose an instructor:</p>
-<%@instructor.each do |instructor|%>
+<% @client.each do |client| %>
   <%=link_to instructor.name, client_instructor_path(current_client, instructor)%><br>
 <%end%>
 <%=link_to "Book a Training Session!", new_client_instructor_path(current_client)%>
