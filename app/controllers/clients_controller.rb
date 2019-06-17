@@ -34,6 +34,6 @@ class ClientsController < ApplicationController
   end
 
   def client_signed_in
-    params.require(:client).permit(:username, :email, :password_digest)
+    params.require(:client).permit(:username, :password_digest)
   end
 end
