@@ -1,6 +1,6 @@
-<h1> You chose: <%= @instructor.name %> </h1>
+<h2> You chose: <%= @instructor.name %> </h2>
 <h3> Specialty: <%= "#{@instructor.specialty}" %> </h3>
 <h3> Associated Gym: <%= "#{@instructor.gym}" %> </h3>
 
-<%=link_to "Book a Training Session!", new_client_instructor_path(current_client)%>
+<%= link_to "Book a Training Session", new_training_path %>
 <%= link_to "Back to All Instructors", instructors_path %>

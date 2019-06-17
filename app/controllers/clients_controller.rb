@@ -6,10 +6,12 @@ class ClientsController < ApplicationController
 
    def index
      @client = Client.all
+     @instructor = Instructor.all
    end
 
   def show
-    @client = current_client
+    @client = Client.all
+    @instructor = Instructor.all 
   end
 
   def create

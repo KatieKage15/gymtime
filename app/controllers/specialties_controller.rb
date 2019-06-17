@@ -1,7 +1,7 @@
 class SpecialtyController < ApplicationController
 
   def index
-    @instructor = Instructor.all
+    @specialty = Instructor.specialty.all
      if params[:client_id]
        @specialty = Client.find(params[:client_id]).specialty
      else
@@ -13,5 +13,5 @@ class SpecialtyController < ApplicationController
     specialty = Specialty.create(client_id: current_user.id, instructor_id: params[:instructor_id])
     redirect_to root_path
   end
-  
+
 end

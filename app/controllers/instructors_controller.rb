@@ -3,8 +3,7 @@ class InstructorsController < ApplicationController
   before_action :require_login
 
   def index
-    @instructors = Instructor.all
-    @specialy_instructor = Instructor.specialty(params[:name])
+    @instructor = Instructor.all
   end
 
   def new
@@ -13,7 +12,6 @@ class InstructorsController < ApplicationController
 
   def show
     @instructor = Instructor.find(params[:id])
-    Instructor.specialty(params[:name])
   end
 
   def edit
