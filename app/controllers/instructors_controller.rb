@@ -11,7 +11,7 @@ class InstructorsController < ApplicationController
 
   def show
     @instructor = Instructor.find(params[:id])
-    Instructor.find_by(params[:specialty])
+    #Instructor.find_by(params[:specialty])
   end
 
   def edit
