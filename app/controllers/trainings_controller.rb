@@ -1,8 +1,9 @@
-class TrainingController < ApplicationController
+class TrainingsController < ApplicationController
   before_action :require_login
 
   def new
     @training = Training.new
+    redirect_to new_training_path
   end
 
   def edit

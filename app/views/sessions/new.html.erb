@@ -1,13 +1,12 @@
 <h2> Sign In </h2>
 
-  <%= form_for @client, url: signin_path, method: :post do |f| %>
-  <%= f.label :username %>
-  <%= f.text_field :username %><br>
+  <%=form_tag('/signin', method: 'post') do%>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %><br>
-
-  <%= f.submit "Signin"%>
+  <%= label_tag :username %><br>
+  <%= text_field_tag :username %>
+  <%= label_tag :password %>
+  <%= password_field_tag :password %><br>
+  <%= submit_tag "Sign In"%>
   <% end %>
 
   <p><%= link_to "Sign in via GitHub", "/auth/github" %> </p>

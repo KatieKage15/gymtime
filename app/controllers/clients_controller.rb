@@ -5,6 +5,10 @@ class ClientsController < ApplicationController
       @client = Client.new
     end
 
+    def index
+      @users = User.all
+    end
+
     def create
       if params[:client][:password] == params[:client][:password_confirmation]
         @client = Client.new(client_params)
@@ -20,9 +24,16 @@ class ClientsController < ApplicationController
     def show
       @client = Client.find_by(id: session[:client_id])
       if @client.trainings.empty?
-        redirect_to new_client_training_path(@client)
+        redirect_to new_training_path(@client)
       end
       @trainings = @client.trainings
+    end
+
+    def destroy
+      if current_client
+        session.delete :client_id
+        redirect_to client_path
+      end
     end
 
     private

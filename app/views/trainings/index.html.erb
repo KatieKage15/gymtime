@@ -1,9 +1,0 @@
-<h1> Intructor Specialties </h1>
-<p> Select a specific instructor based on your personal fitness goals. </p>
-<ul>
-  <% @instructor.all.distinct.pluck(:specialty).each do |specialty| %>
-    <li> <%= "#{specialty}" %> </li>
-  <% end %>
-</ul>
-
-<%= link_to "View Instructors", instructors_path %>

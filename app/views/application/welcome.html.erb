@@ -1,7 +1,4 @@
 <h1> Welcome to GymTime! </h1>
 <h3> Let's find you the perfect fitness intructor! </h3>
 
-<% if signed_in? %>
-<h3> Hello, <%= current_client.username %>! Are you ready to conquer your fitness goals?! </h3>
   <%= link_to "Our Instructors", instructors_path %>
-<% end %>
