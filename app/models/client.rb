@@ -6,9 +6,17 @@ class Client < ApplicationRecord
   validates_format_of :email, with: /@/
   validates_uniqueness_of :email, case_sensitive: false
 
-  def self.find_or_create_by_omniauth(auth_hash)
-    self.where(:username => auth_hash["username"]).first_or_create do |client|
-      client.password = SecureRandom.hex
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |client|
+      client.email = auth.info.email
+      client.uid = auth.uid
+      client.provider = auth.provider
+      client.avatar_url = auth.info.image
+      client.username = auth.info.name
+      client.oauth_token = auth.credentials.token
+      client.password_digest = "password"
+      client.name = user.username
+      client.save!
     end
   end
 end

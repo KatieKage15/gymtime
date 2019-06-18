@@ -1,7 +1,23 @@
 module ApplicationHelper
 
-  def client_signed_in?
-    @client.present?
+  def current_client
+    @client = (Client.find_by(id: session[:client_id]) || Client.new)
+  end
+
+  def logged_in?
+    current_client.id != nil
+  end
+
+  def require_logged_in
+    return redirect_to signin_url unless session[:client_id]
+  end
+
+  def is_current_client?
+    return redirect_to training_path(current_client.training) unless current_client == Client.find_by(id: params[:id])
+  end
+
+  def is_admin?
+    current_client.admin
   end
 
   def flash_class(level)

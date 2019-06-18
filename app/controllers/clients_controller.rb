@@ -1,3 +1,4 @@
+require 'pry'
 class ClientsController < ApplicationController
 
   def new
@@ -15,8 +16,8 @@ class ClientsController < ApplicationController
   end
 
   def create
-    client = Client.create(client_params)
-    if client.save
+    @client = Client.create(client_params)
+    if @client.save
       redirect_to client_path(client)
     else
       render :new
