@@ -1,17 +1,21 @@
 class SpecialtyController < ApplicationController
+  before_action :require_login
 
-  def index
-    @specialty = Instructor.specialty.all
-     if params[:client_id]
-       @specialty = Client.find(params[:client_id]).specialty
-     else
-       @specialty = Specialty.all
+    def new
+      @specialty = Specialty.new
     end
-   end
 
-  def create
-    specialty = Specialty.create(client_id: current_user.id, instructor_id: params[:instructor_id])
-    redirect_to root_path
+    def create
+      @specialty = Specialty.new(specialty_params)
+      if @specialty.save
+        redirect_to client_path(current_client)
+      else
+        render :new
+      end
+    end
+
+    private
+      def specialty_params
+        params.require(:specialty).permit(:name)
+      end
   end
-
-end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_11_162207) do
+ActiveRecord::Schema.define(version: 2019_06_18_185303) do
 
   create_table "clients", force: :cascade do |t|
     t.string "email"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2019_06_11_162207) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "oauth_token"
   end
 
   create_table "instructors", force: :cascade do |t|
@@ -26,6 +27,10 @@ ActiveRecord::Schema.define(version: 2019_06_11_162207) do
     t.string "specialty"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "specialties", force: :cascade do |t|
+    t.string "name"
   end
 
   create_table "trainings", force: :cascade do |t|

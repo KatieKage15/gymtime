@@ -4,11 +4,11 @@ module ApplicationHelper
     @client = (Client.find_by(id: session[:client_id]) || Client.new)
   end
 
-  def logged_in?
-    current_client.id != nil
+  def signed_in?
+    current_client != nil
   end
 
-  def require_logged_in
+  def require_signed_in
     return redirect_to signin_url unless session[:client_id]
   end
 

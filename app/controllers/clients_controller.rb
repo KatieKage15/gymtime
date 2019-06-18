@@ -1,42 +1,32 @@
-require 'pry'
 class ClientsController < ApplicationController
+  before_action :require_login, except: [:new, :create]
 
-  def new
-    @client = Client.new
-  end
-
-   def index
-     @client = Client.all
-     @instructor = Instructor.all
-   end
-
-  def show
-    @client = Client.all
-    @instructor = Instructor.all
-  end
-
-  def create
-    @client = Client.create(client_params)
-    if @client.save
-      redirect_to client_path(client)
-    else
-      render :new
+    def new
+      @client = Client.new
     end
-  end
 
-  def destroy
-    @client = Client.find(params[:id])
-    @client.destroy
-    redirect_to instructors_path
-  end
+    def create
+      if params[:client][:password] == params[:client][:password_confirmation]
+        @client = Client.new(client_params)
+        if @client.save
+          session[:client_id] = @client.id
+          redirect_to @client
+        else
+          render :new
+        end
+      end
+    end
+
+    def show
+      @client = Client.find_by(id: session[:client_id])
+      if @client.trainings.empty?
+        redirect_to new_client_training_path(@client)
+      end
+      @trainings = @client.trainings
+    end
 
     private
-
-  def client_params
-    params.require(:client).permit(:username, :email, :password_digest)
+      def client_params
+        params.require(:client).permit(:username, :email, :password)
+      end
   end
-
-  def client_signed_in
-    params.require(:client).permit(:username, :password_digest)
-  end
-end
