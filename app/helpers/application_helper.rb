@@ -1,9 +1,5 @@
 module ApplicationHelper
 
-  def current_client
-    @client = (Client.find_by(id: session[:client_id]) || Client.new)
-  end
-
   def signed_in?
     current_client != nil
   end

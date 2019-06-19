@@ -1,10 +1,14 @@
-<%if @instructor.errors.any?%>
-  <div class='fields_with_errors'>
-  <%@instructor.errors.full_messages.each do |msg|%>
-    <%=msg%>
-  <%end%>
-  </div>
-<%end%>
+<h1> Create a New Instructor</h1>
 
-<h1>Add a New Instructor</h1>
-<%= render partial: 'form', locals: {instructor: @instructor} %>
+<%= form_for @instructor do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %><br />
+  <br />
+  <%= f.label :gym %>
+  <%= f.text_field :gym %><br />
+  <br />
+  <%= f.label :specialty %>
+  <%= f.text_field :specialty %><br />
+  <%= f.submit %>
+<% end %>
+</br>

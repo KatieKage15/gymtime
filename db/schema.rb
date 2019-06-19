@@ -41,5 +41,4 @@ ActiveRecord::Schema.define(version: 2019_06_18_185303) do
     t.datetime "updated_at", null: false
     t.time "daytime"
   end
-
 end

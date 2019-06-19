@@ -13,14 +13,14 @@ class ClientsController < ApplicationController
     end
 
     def create
-      if params[:client][:password] == params[:client][:password_confirmation]
-        @client = Client.new(client_params)
-        if @client.save
-          session[:client_id] = @client.id
-          redirect_to @client
-        else
-          render :new
-        end
+    @client = Client.new(email: params[:client][:email], password: SecureRandom.hex, username: params[:client][:username])
+      if @client.save
+        session[:client_id] = @client.id
+        flash[:success] = 'Account created'
+        redirect_to @client
+      else
+        flash[:notice] ='ERROR: Account was not created'
+        render :new
       end
     end
 
@@ -46,6 +46,6 @@ class ClientsController < ApplicationController
 
     private
       def client_params
-        params.permit(:client_id, :username, :email, :password)
+        params.require(:client).permit(:id, :username, :email, :password_digest)
       end
   end

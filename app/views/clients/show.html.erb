@@ -1,4 +1,6 @@
-<h2>Here are your list of certified instructors:</h2>
+<h2><%= @client.username %></h2>
+
+<h3>Here are your list of certified instructors:</h3>
 
 <% @instructor.each do |instructor| %>
     <li><%= link_to "#{instructor.name}", instructor_path(instructor.id) %></li>

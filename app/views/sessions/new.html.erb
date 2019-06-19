@@ -1,12 +1,13 @@
 <h2> Sign In </h2>
 
-  <%=form_tag('/signin', method: 'post') do%>
-
-  <%= label_tag :username %><br>
-  <%= text_field_tag :username %>
-  <%= label_tag :password %>
-  <%= password_field_tag :password %><br>
-  <%= submit_tag "Sign In"%>
+<br>
+  <%= form_tag("/signin", method: "post") do %>
+  <h2>Username:</h2>
+  <%= collection_select(:client, :username, Client.all, :username, :username) %><br/>
+  <h2>Password:</h2>
+  <br>
+  <%= password_field_tag :"client[password]" %>
+  <%= submit_tag "Sign In"%><br/>
   <% end %>
 
   <p><%= link_to "Sign in via GitHub", "/auth/github" %> </p>

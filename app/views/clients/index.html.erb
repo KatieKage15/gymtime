@@ -1,4 +1,4 @@
-<h1>Current Client</h1>
+<h2><%= @client.username %></h2>
   <ul>
   <% @client.each do |client| %>
     <li><%= link_to "#{client.username}", client_path(client) %></li>

@@ -15,12 +15,13 @@ class InstructorsController < ApplicationController
   end
 
   def edit
+    @instructor = Instructor.find(params[:id])
   end
 
   def create
     @instructor = Instructor.create(instructor_params)
     if @instructor.save
-      redirect_to instructors_path
+      redirect_to @instructor
     else
       render :new
     end
