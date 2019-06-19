@@ -1,8 +1,5 @@
-<h2>Choose an instructor:</h2>
-<%@instructor.each do |instructor|%>
-  <%=link_to instructor.name, user_instructor_path(current_client, instructor)%><br>
-<% end %>
+<h2>Here are your list of certified instructors:</h2>
 
-<%=link_to "Book a Training Session!", new_instructor_path(current_client)%>
-<%= link_to "View Specialties", training_path %>
-<%= link_to "View Instructors", instructors_path %>
+<% @instructor.each do |instructor| %>
+    <li><%= link_to "#{instructor.name}", instructor_path(instructor.id) %></li>
+  <% end %>

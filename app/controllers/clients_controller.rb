@@ -9,6 +9,9 @@ class ClientsController < ApplicationController
       @users = User.all
     end
 
+    def edit
+    end
+
     def create
       if params[:client][:password] == params[:client][:password_confirmation]
         @client = Client.new(client_params)
@@ -23,10 +26,15 @@ class ClientsController < ApplicationController
 
     def show
       @client = Client.find_by(id: session[:client_id])
-      if @client.trainings.empty?
-        redirect_to new_training_path(@client)
+    end
+
+    def update
+      @client.update(client_params)
+      if @client.save
+        redirect_to client_path(@client)
+      else
+        render :edit
       end
-      @trainings = @client.trainings
     end
 
     def destroy
@@ -38,6 +46,6 @@ class ClientsController < ApplicationController
 
     private
       def client_params
-        params.require(:client).permit(:username, :email, :password)
+        params.permit(:client_id, :username, :email, :password)
       end
   end

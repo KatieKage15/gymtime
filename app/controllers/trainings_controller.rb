@@ -1,6 +1,10 @@
 class TrainingsController < ApplicationController
   before_action :require_login
 
+  def index
+    @training = Training.all
+  end
+
   def new
     @training = Training.new
     redirect_to new_training_path
